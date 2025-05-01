@@ -35,11 +35,39 @@ JWT_SECRET=your-secret-key
 PORT=3000
 ```
 
-5. Apply the Prisma schema to your database:
+5. Set up your database:
+
+**Development (Quick Setup):**
+
+If you're in development and want a quick setup without tracking schema changes:
 
 ```bash
 npx prisma db push
 ```
+
+**Production (Recommended):**
+
+For production environments, use migrations to track and version your schema changes:
+
+```bash
+# Generate a migration from your schema changes
+npx prisma migrate dev --name init
+
+# Apply migrations in production environments
+npx prisma migrate deploy
+```
+
+**Understanding Prisma Database Management:**
+
+- **`db push`** - Directly applies schema changes to the database without versioning. Ideal for development and prototyping when your schema is frequently changing.
+
+- **`migrate dev`** - Creates migration files that track schema changes and applies them to your development database. This helps with:
+
+  - Version control for database schema
+  - Team collaboration (everyone applies the same migrations)
+  - Keeping development/staging/production environments in sync
+
+- **`migrate deploy`** - Applies existing migrations to the database without generating new ones. Used in production/CI environments.
 
 6. Start the development server:
 
