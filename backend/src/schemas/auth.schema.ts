@@ -11,7 +11,7 @@ export const registerSchema = z.object({
     .email({ message: 'Invalid email' })
     .nonempty({ message: 'Email is required' }),
   password: z.string().nonempty({ message: 'Password is required' }),
-  role: z.enum([CONSTANTS.AUTH.ROLES.USER]),
+  role: z.enum([CONSTANTS.AUTH.ROLES.USER]).optional(),
   mobile: z.string().optional(),
   address: z.string().optional(),
   dob: z.string().date('Invalid date').optional(),

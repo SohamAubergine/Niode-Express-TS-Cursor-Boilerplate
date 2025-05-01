@@ -5,11 +5,10 @@ export interface RegisterRequest {
   name: string
   email: string
   password: string
-  role: 'USER' | 'INSTRUCTOR' | 'ADMIN'
+  role: 'USER' | 'ADMIN'
   mobile?: string
   address?: string
   dob?: string
-  adminCode?: string
 }
 
 /**
@@ -59,3 +58,5 @@ export interface User {
 export type RegisterResponse = {
   user: User
 }
+
+export type UserRole = 'USER' | 'ADMIN'
